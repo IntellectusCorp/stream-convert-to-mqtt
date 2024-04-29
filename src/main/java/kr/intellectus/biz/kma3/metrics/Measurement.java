@@ -1,5 +1,7 @@
 package kr.intellectus.biz.kma3.metrics;
 
+import java.nio.ByteBuffer;
+
 public abstract class Measurement implements Metric {
 
     static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(Measurement.class);
@@ -56,15 +58,20 @@ public abstract class Measurement implements Metric {
 
     private static byte[] parseRepresentedToBytes(final int represented, final int bitOffset) {
         
-        final int lowBitsOffest = 16 - bitOffset; 
-        final int highBitsOffset = 8 - lowBitsOffest;
-        final byte lowBitsMask = (byte) (( 1 << highBitsOffset)  - 1 );
+        // final int lowBitsOffest = 16 - bitOffset; 
+        // final int highBitsOffset = 8 - lowBitsOffest;
+        // final byte lowBitsMask = (byte) (( 1 << highBitsOffset)  - 1 );
         
-        byte[] parsed = new byte[2]; 
+        // byte[] parsed = new byte[2]; 
 
-        parsed[0] = (byte)((represented >> highBitsOffset) & 0xFF);
-        parsed[1] = (byte)((represented & lowBitsMask) << lowBitsOffest);
-        return parsed;
+        // parsed[0] = (byte)((represented >> highBitsOffset) & 0xFF);
+        // parsed[1] = (byte)((represented & lowBitsMask) << lowBitsOffest);
+
+        // parsed[0] = (byte) represented >> 24;
+        ByteBuffer buffer = ByteBuffer.allocate(2);
+        buffer.putShort((short) represented);
+
+        return buffer.array();
     }
 
     private static class RepresentedValue {

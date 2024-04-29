@@ -22,7 +22,7 @@ public class AirTemperature extends Measurement {
 
     @Override
     public String getObservedValueString() {
-        float observedValue = (float)super.getRepresentedValue()  / 10.0f;
+        float observedValue = ((float)super.getRepresentedValue()  / 10.0f ) - 100;
         return String.valueOf(observedValue);
     }
 
