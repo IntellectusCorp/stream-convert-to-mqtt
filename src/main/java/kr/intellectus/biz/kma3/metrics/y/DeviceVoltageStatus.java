@@ -8,7 +8,7 @@ public class DeviceVoltageStatus extends Measurement {
 
     public static final int OFFSET_BYTES = 1;
     private static final int BITS_OFFSET = 8;
-    private static final Metrics METRIC = Metrics.DEVICE_SENSOR_STATUS;
+    private static final Metrics METRIC = Metrics.DEVICE_VOLTAGE_STATUS;
 
     public DeviceVoltageStatus(final byte[] rawBytes) {
         super(METRIC, 0, rawBytes);

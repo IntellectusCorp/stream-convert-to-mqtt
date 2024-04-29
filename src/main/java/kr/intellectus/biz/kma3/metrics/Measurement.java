@@ -23,7 +23,7 @@ public abstract class Measurement implements Metric {
     }
 
     public Measurement(final Metrics metric, final int represented, final byte[] bytes) {
-        this(metric, bytes, represented);
+        this(metric, bytes, new RepresentedValue(represented));
     }
 
     public byte[] getRawBytes() {

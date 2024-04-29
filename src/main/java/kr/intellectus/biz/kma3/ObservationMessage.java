@@ -16,7 +16,8 @@ import software.amazon.awssdk.thirdparty.jackson.core.util.ByteArrayBuilder;
 
 public class ObservationMessage {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(ObservationMessage.class);
+    // static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(ObservationMessage.class);
+    static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(ObservationMessage.class);
 
     private final byte[] messageRawBytes;
 
@@ -49,10 +50,10 @@ public class ObservationMessage {
         byte[] XBytes = observationMetrics.get(MetricsGroup.X);
         byte[] YBytes = observationMetrics.get(MetricsGroup.Y);
 
-        logger.info(String.format(
-                "Constructing ObservationMessage with bytes size(A,B,C,CL,N,NL, I, X: %d, %d, %d, %d, %d, %d, %d, %d, %d)",
-                ABytes.length, BBytes.length, CBytes.length, CLBytes.length, NBytes.length, NLBytes.length,
-                IBytes.length, XBytes.length, YBytes.length));
+        // logger.info(String.format(
+        //         "Constructing ObservationMessage with bytes size(A,B,C,CL,N,NL, I, X: %d, %d, %d, %d, %d, %d, %d, %d, %d)",
+        //         ABytes.length, BBytes.length, CBytes.length, CLBytes.length, NBytes.length, NLBytes.length,
+        //         IBytes.length, XBytes.length, YBytes.length));
 
         setObservationGroupMetrics(MetricsGroup.A, ABytes);
         setObservationGroupMetrics(MetricsGroup.B, BBytes);
@@ -145,7 +146,8 @@ public class ObservationMessage {
 
             } catch (Exception exception) {
 
-                logger.info("Error occurs during setObservationGroupMetrics.");
+                exception.printStackTrace();
+                logger.error("Error occurs during setObservationGroupMetrics.");
 
             }
         }
@@ -164,6 +166,18 @@ public class ObservationMessage {
         return builder.toString();
     }
 
+    public String summary() {
+        StringBuilder summary = new StringBuilder();
+
+        summary.append(this.dateTime.print()); summary.append(", ");
+        summary.append(this.metrics.get(Metrics.AIR_TEMPERATURE).getObservedValueString()); summary.append(", ");
+        summary.append(this.metrics.get(Metrics.AIR_TEMPERATURE).getObservedValueString()); summary.append(", ");
+        summary.append(this.metrics.get(Metrics.WIND_DIRECTION).getObservedValueString()); summary.append(", ");
+        summary.append(this.metrics.get(Metrics.WIND_SPEED).getObservedValueString());
+
+        return summary.toString();
+    }
+
     public static Builder builder() {
         return new BuilderImpl();
     }
@@ -171,6 +185,8 @@ public class ObservationMessage {
     public interface Builder {
 
         public ObservationMessage build() throws Exception;
+
+        public ObservationMessage buildUsingBytes(byte[] messageBytes) throws Exception;
 
         public Builder setDateTime(DateTime dateTime);
 
@@ -247,7 +263,84 @@ public class ObservationMessage {
 
             return new ObservationMessage(protocolVer, dateTime, type, format, observationMetrics);
         }
+
+        @Override
+        public ObservationMessage buildUsingBytes(final byte[] messageBytes) throws Exception {
+    
+            byte[] verBytes = new byte[ProtocolVersion.OFFSET_BYTES]; 
+            System.arraycopy(messageBytes, 2, verBytes, 0, verBytes.length);
+            ProtocolVersion pVer = new ProtocolVersion(verBytes);
+
+            byte[] datetimeBytes = new byte[DateTime.OFFSET_BYTES]; 
+            System.arraycopy(messageBytes, 5, datetimeBytes, 0, datetimeBytes.length);
+            DateTime dt = new DateTime(datetimeBytes);
+
+            byte[] typeBytes = new byte[ObservationType.OFFSET_BYTES]; 
+            System.arraycopy(messageBytes, 10, typeBytes, 0, typeBytes.length);
+            ObservationType obsType = new ObservationType(typeBytes[0]);
+
+            byte[] formatBytes = new byte[ObservationFormat.OFFSET_BYTES]; 
+            System.arraycopy(messageBytes, 11, formatBytes, 0, formatBytes.length);
+            ObservationFormat obsFormat = new ObservationFormat(formatBytes[0]);
+
+            int offset = 14;
+            byte[] metricABytes = new byte[MetricsGroup.A.OFFSET_BYTES]; 
+            System.arraycopy(messageBytes, offset, metricABytes, 0, metricABytes.length);
+            this.observationMetrics.put(MetricsGroup.A, metricABytes);
+
+            offset += MetricsGroup.A.OFFSET_BYTES;
+
+            byte[] metricBbytes = new byte[MetricsGroup.B.OFFSET_BYTES]; 
+            System.arraycopy(messageBytes, offset, metricBbytes, 0, metricBbytes.length);
+            this.observationMetrics.put(MetricsGroup.B, metricBbytes);
+
+            offset += MetricsGroup.B.OFFSET_BYTES;
+
+            byte[] metricCbytes = new byte[MetricsGroup.C.OFFSET_BYTES]; 
+            System.arraycopy(messageBytes, offset, metricCbytes, 0, metricCbytes.length);
+            this.observationMetrics.put(MetricsGroup.C, metricCbytes);
+
+            offset += MetricsGroup.C.OFFSET_BYTES;
+
+            byte[] metricCLbytes = new byte[MetricsGroup.CL.OFFSET_BYTES]; 
+            System.arraycopy(messageBytes, offset, metricCLbytes, 0, metricCLbytes.length);
+            this.observationMetrics.put(MetricsGroup.CL, metricCLbytes);
+
+            offset += MetricsGroup.CL.OFFSET_BYTES;
+
+            byte[] metricNbytes = new byte[MetricsGroup.N.OFFSET_BYTES]; 
+            System.arraycopy(messageBytes, offset, metricNbytes, 0, metricNbytes.length);
+            this.observationMetrics.put(MetricsGroup.N, metricNbytes);
+
+            offset += MetricsGroup.N.OFFSET_BYTES;
+
+            byte[] metricNLbytes = new byte[MetricsGroup.NL.OFFSET_BYTES]; 
+            System.arraycopy(messageBytes, offset, metricNLbytes, 0, metricNLbytes.length);
+            this.observationMetrics.put(MetricsGroup.NL, metricNLbytes);
+
+            offset += MetricsGroup.NL.OFFSET_BYTES;
+
+            byte[] metricIbytes = new byte[MetricsGroup.I.OFFSET_BYTES]; 
+            System.arraycopy(messageBytes, offset, metricIbytes, 0, metricIbytes.length);
+            this.observationMetrics.put(MetricsGroup.I, metricIbytes);
+
+            offset += MetricsGroup.I.OFFSET_BYTES;
+
+            byte[] metricXbytes = new byte[MetricsGroup.X.OFFSET_BYTES]; 
+            System.arraycopy(messageBytes, offset, metricXbytes, 0, metricXbytes.length);
+            this.observationMetrics.put(MetricsGroup.X, metricXbytes);
+
+            offset += MetricsGroup.X.OFFSET_BYTES;
+
+            byte[] metricYbytes = new byte[MetricsGroup.Y.OFFSET_BYTES]; 
+            System.arraycopy(messageBytes, offset, metricYbytes, 0, metricYbytes.length);
+            this.observationMetrics.put(MetricsGroup.Y, metricYbytes);
+
+            return new ObservationMessage(pVer, dt, obsType, obsFormat, this.observationMetrics);
+        }
     }
+
+
 
     public String printFullMessage() {
         StringBuilder builder = new StringBuilder();

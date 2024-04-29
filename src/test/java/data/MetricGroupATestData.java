@@ -34,7 +34,7 @@ public final class MetricGroupATestData {
                         final Random random = new Random();
                         ByteArrayBuilder testMessageBuilder = new ByteArrayBuilder();
 
-                        final AirTemperature airTemp = new AirTemperature(random.nextInt(1199, 1202));
+                        final AirTemperature airTemp = new AirTemperature(1199);
                         testMessageBuilder.write(airTemp.getRawBytes());
 
                         final Metric wd = new WindDirection(1000);

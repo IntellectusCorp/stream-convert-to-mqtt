@@ -51,22 +51,30 @@ public class DateTime {
 
     public DateTime(LocalDateTime now) {
         this(
-            (short) (now.getYear() - 2000),
-            (short) now.getMonthValue(),
-            (short) now.getDayOfMonth(),
-            (short) now.getHour(),
-            (short) now.getMinute()
-        );        
+                (short) (now.getYear() - 2000),
+                (short) now.getMonthValue(),
+                (short) now.getDayOfMonth(),
+                (short) now.getHour(),
+                (short) now.getMinute());
     }
 
     public String print() {
         return new StringBuilder()
                 .append(year)
+                .append("-")
                 .append(month)
+                .append("-")
                 .append(day)
+                .append("-")
                 .append(hours)
+                .append(":")
                 .append(minutes)
                 .toString();
+    }
+
+    @Override
+    public String toString() {
+        return print();
     }
 
     public byte[] getRawBytes() {

@@ -6,6 +6,7 @@ import java.util.List;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
+import kr.intellectus.biz.kma3.ObservationMessage;
 
 public class KMA3MessageDecoder extends ByteToMessageDecoder {
 
@@ -48,8 +49,9 @@ public class KMA3MessageDecoder extends ByteToMessageDecoder {
             byte[] messageBytes = new byte[153];
             in.readBytes(messageBytes);
 
-            logger.info("Building message");
-            // out.add(message);
+            ObservationMessage message = ObservationMessage.builder().buildUsingBytes(messageBytes);
+            logger.info("ObservationMessage has built: " + message.summary());
+            out.add(message);
         } else {
             in.readBytes(header);
         }
