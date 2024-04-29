@@ -40,11 +40,16 @@ public abstract class Measurement implements Metric {
 
     private static  int parseBytesToRepresentedValue(byte[] bytes, int bitOffset) {
 
-        final int lowBitsOffest = 16 - bitOffset; 
-        final int highBitsOffset = 8 - lowBitsOffest; 
+        // final int lowBitsOffest = 16 - bitOffset; 
+        // final int highBitsOffset = 8 - lowBitsOffest; 
+        // final int highBitsOffset = 8 - lowBitsOffest; 
+        final int lowBitsOffest = 8; 
 
-        int highBits = (bytes[0] & 0xFF) << highBitsOffset;
-        int lowBits = (bytes[1] & 0xFF) >>> lowBitsOffest;
+        // int highBits = (bytes[0] & 0xFF) << highBitsOffset;
+        // int lowBits = (bytes[1] & 0xFF) >> lowBitsOffest;
+
+        int highBits = (bytes[0] & 0xFF) << lowBitsOffest;
+        int lowBits = (bytes[1] & 0xFF);
 
         return (highBits | lowBits);
     }
