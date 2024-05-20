@@ -15,7 +15,6 @@ import us.int2.util.ServerUtil;
 
 public class KMA3Broker implements AutoCloseable {
 
-    // static final kr.intellectus.util.Logger logger = Loggers.getLogger(KMA3Broker.class);
     static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(KMA3Broker.class);
 
 

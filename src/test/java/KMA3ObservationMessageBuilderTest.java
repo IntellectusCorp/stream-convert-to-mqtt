@@ -15,8 +15,7 @@ import kr.intellectus.biz.kma3.metrics.MetricsGroup;
 
 public class KMA3ObservationMessageBuilderTest {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers
-            .getLogger(KMA3ObservationMessageBuilderTest.class);
+        static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(KMA3ObservationMessageBuilderTest.class);
 
     @Test
     public void builderTest() throws Exception {

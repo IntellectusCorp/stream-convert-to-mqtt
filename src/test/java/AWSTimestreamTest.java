@@ -18,7 +18,7 @@ import kr.intellectus.infra.AWSTimestream;
 
 public class AWSTimestreamTest {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(AWSTimestreamTest.class);
+    static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(AWSTimestreamTest.class);
 
     @Test
     public void writeWithBuilderTest() throws Exception {

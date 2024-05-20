@@ -10,13 +10,11 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.ssl.SslContext;
-// import kr.intellectus.util.Loggers;
 import us.int2.server.ServerHandler;
 import us.int2.util.ServerUtil;
 
 final class TCPServerDafult extends TCPServer {
 
-    // static final kr.intellectus.util.Logger logger = Loggers.getLogger(KMA3Broker.class);
     static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(KMA3Broker.class);
     
     static final TCPServerDafult INSTANCE = new TCPServerDafult();

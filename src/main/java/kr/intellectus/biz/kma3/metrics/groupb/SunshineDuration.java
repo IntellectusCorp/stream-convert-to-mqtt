@@ -6,8 +6,6 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class SunshineDuration extends Measurement {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(SunshineDuration.class);
-
     private final static Metrics metric = Metrics.SUNSHINE_DURATION;
     private final static int BITS_OFFSET = 16;
     public final static int OFFSET_BYTES = 2;

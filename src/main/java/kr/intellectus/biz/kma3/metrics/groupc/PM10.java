@@ -6,8 +6,6 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class PM10 extends Measurement {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(PM10.class);
-
     private final static Metrics metric = Metrics.PM10;
     private final static int BITS_OFFSET = 12;
     public final static int OFFSET_BYTES = 2;

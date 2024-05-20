@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class DateTime {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(DateTime.class);
+    static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(DateTime.class);
 
     public static final int OFFSET_BYTES = 5;
 

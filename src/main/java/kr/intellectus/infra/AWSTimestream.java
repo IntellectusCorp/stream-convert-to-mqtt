@@ -20,7 +20,8 @@ import software.amazon.awssdk.services.timestreamwrite.model.WriteRecordsRequest
 
 public class AWSTimestream {
 
-        static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(AWSTimestream.class);
+            static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(AWSTimestream.class);
+
 
         private final TimestreamWriteClient writeClient;
 

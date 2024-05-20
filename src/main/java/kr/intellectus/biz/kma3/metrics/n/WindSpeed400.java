@@ -6,8 +6,6 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class WindSpeed400 extends Measurement {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(WindSpeed400.class);
-
     private final static Metrics metric = Metrics.WIND_SPEED_400;
     private final static int BITS_OFFSET = 10;
     public final static int OFFSET_BYTES = 2;

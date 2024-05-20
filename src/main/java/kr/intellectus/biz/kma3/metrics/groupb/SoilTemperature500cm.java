@@ -7,8 +7,6 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class SoilTemperature500cm extends Measurement {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(SoilTemperature500cm.class);
-
     private final static Metrics metric = Metrics.SOIL_TEMPERATURE_500CM;
     private final static int BITS_OFFSET = 11;
     public final static int OFFSET_BYTES = 2;

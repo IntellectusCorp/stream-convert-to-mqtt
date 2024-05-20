@@ -6,7 +6,7 @@ import kr.intellectus.biz.kma3.metrics.groupa.AirTemperature;
 
 public class AirTemperatureTest {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(AirTemperatureTest.class);
+    static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(AirTemperatureTest.class);
     
     /*
      *  기압: 1분 평균 현지 기압

@@ -4,7 +4,7 @@ import java.nio.ByteBuffer;
 
 public abstract class Measurement implements Metric {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(Measurement.class);
+    static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(Measurement.class);
 
     private final byte[] rawByte ;
     private final RepresentedValue represented;

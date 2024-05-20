@@ -8,8 +8,9 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 
 public class KMS3ClientChannelHandler extends ChannelInboundHandlerAdapter {
 
+    static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(KMS3ClientChannelHandler.class);
+
     private ChannelHandlerContext context = null;
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(KMS3ClientChannelHandler.class);
 
     public void sendMessage(byte[] message) throws Exception {
 

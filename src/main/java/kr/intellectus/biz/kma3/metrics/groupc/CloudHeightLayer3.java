@@ -6,8 +6,6 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class CloudHeightLayer3 extends Measurement {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(CloudHeightLayer3.class);
-
     private final static Metrics metric = Metrics.CLOUD_HEIGHT_LAYER3;
     private final static int BITS_OFFSET = 13;
     public final static int OFFSET_BYTES = 2;

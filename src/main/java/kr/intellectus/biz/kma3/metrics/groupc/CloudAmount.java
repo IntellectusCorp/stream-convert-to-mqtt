@@ -6,8 +6,6 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class CloudAmount extends Measurement {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(CloudAmount.class);
-
     private final static Metrics metric = Metrics.CLOUD_AMOUNT;
     private final static int BITS_OFFSET = 4;
     public final static int OFFSET_BYTES = 2;

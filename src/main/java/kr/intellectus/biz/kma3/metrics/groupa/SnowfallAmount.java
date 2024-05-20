@@ -6,12 +6,9 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class SnowfallAmount extends Measurement {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(SnowfallAmount.class);
-
     private final static Metrics METRIC = Metrics.SNOWFALL_AMOUNT;
     private final static int BITS_OFFSET = 16;
     public final static int OFFSET_BYTES = 2;
-
 
     public SnowfallAmount(byte[] bytes) {
         super(METRIC, bytes, BITS_OFFSET);

@@ -6,8 +6,6 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class WindDirectionInstantaneous extends Measurement {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(WindDirectionInstantaneous.class);
-
     private final static Metrics METRIC = Metrics.WIND_DIRECTION_INSTANTANEOUS;
     private final static int BITS_OFFSET = 12;
     public final static int OFFSET_BYTES = 2;

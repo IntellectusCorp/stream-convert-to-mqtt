@@ -6,8 +6,6 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class RelativeHumidity50 extends Measurement {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(RelativeHumidity50.class);
-
     private final static Metrics METRIC = Metrics.RELATIVE_HUMIDITY_50;
     private final static int BITS_OFFSET = 10;
     public final static int OFFSET_BYTES = 2;

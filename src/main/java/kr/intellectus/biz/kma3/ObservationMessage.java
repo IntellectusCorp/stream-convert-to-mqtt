@@ -16,7 +16,6 @@ import software.amazon.awssdk.thirdparty.jackson.core.util.ByteArrayBuilder;
 
 public class ObservationMessage {
 
-    // static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(ObservationMessage.class);
     static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(ObservationMessage.class);
 
     private final byte[] messageRawBytes;

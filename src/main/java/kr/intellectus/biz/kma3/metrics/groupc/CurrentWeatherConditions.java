@@ -6,9 +6,6 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class CurrentWeatherConditions extends Measurement {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers
-            .getLogger(CurrentWeatherConditions.class);
-
     private final static Metrics metric = Metrics.CURRENT_WEATHER_CONDITIONS;
     private final static int BITS_OFFSET = 7;
     public final static int OFFSET_BYTES = 2;

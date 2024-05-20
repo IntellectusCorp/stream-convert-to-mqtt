@@ -6,8 +6,8 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class AirPressure extends Measurement{
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(AirPressure.class);
-
+    static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(AirPressure.class);
+    
     private final static Metrics metric = Metrics.AIR_PRESSURE;
     private final static int BITS_OFFSET = 14;
 

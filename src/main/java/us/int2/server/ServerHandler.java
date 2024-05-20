@@ -9,7 +9,6 @@ import kr.intellectus.infra.AWSTimestream;
 @Sharable
 public class ServerHandler  extends ChannelInboundHandlerAdapter {
 
-    // static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(ServerHandler.class);
     static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(ServerHandler.class);
 
     private AWSTimestream timestream;

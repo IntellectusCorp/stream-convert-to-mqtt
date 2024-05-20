@@ -6,8 +6,6 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class Visibility extends Measurement {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(Visibility.class);
-
     private final static Metrics metric = Metrics.VISIBILITY;
     private final static int BITS_OFFSET = 16;
     public final static int OFFSET_BYTES = 2;

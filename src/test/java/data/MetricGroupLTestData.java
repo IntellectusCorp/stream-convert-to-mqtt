@@ -9,8 +9,7 @@ import software.amazon.awssdk.thirdparty.jackson.core.util.ByteArrayBuilder;
 
 public final class MetricGroupLTestData {
 
-        static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers
-                        .getLogger(MetricGroupLTestData.class);
+        static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(MetricGroupLTestData.class);
 
         public static byte[] BYTES_CL = GroupL.getCLBytes();
         public static byte[] BYTES_NL = GroupL.getNLBytes();

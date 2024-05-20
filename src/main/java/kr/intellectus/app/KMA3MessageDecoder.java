@@ -10,7 +10,6 @@ import kr.intellectus.biz.kma3.ObservationMessage;
 
 public class KMA3MessageDecoder extends ByteToMessageDecoder {
 
-    // static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(KMA3MessageDecoder.class);
     static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(KMA3MessageDecoder.class);
 
 

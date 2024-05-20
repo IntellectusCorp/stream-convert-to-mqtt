@@ -11,7 +11,6 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import kr.intellectus.protocols.kms3.KMS3Encoder;
-import kr.intellectus.util.Loggers;
 
 public class KMS3Client implements AutoCloseable, Runnable {
 
@@ -22,7 +21,8 @@ public class KMS3Client implements AutoCloseable, Runnable {
     private String host;
     private int port;
 
-    static final kr.intellectus.util.Logger logger = Loggers.getLogger(KMS3Client.class);
+    static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(KMS3Client.class);
+
 
     public KMS3Client(final String host, final int port) {
         this.host = host;

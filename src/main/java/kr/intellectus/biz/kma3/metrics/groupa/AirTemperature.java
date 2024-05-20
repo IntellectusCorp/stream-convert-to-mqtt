@@ -6,7 +6,7 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class AirTemperature extends Measurement {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(AirTemperature.class);
+    static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(AirTemperature.class);
 
     private final static Metrics metric = Metrics.AIR_TEMPERATURE;
     private final static int BITS_OFFSET = 11;

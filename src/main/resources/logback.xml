@@ -6,7 +6,7 @@
         </encoder>
     </appender>
 
-    <logger name="io.netty" level="info"/>
+    <logger name="io.netty" level="info" />
     <logger name="org.springframework" level="info"/>
     <logger name="kr.intellectus" level="info"/>
     <logger name="software.amazon" level="info"/>

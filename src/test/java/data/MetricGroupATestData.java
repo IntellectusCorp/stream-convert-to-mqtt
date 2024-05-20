@@ -20,8 +20,7 @@ import software.amazon.awssdk.thirdparty.jackson.core.util.ByteArrayBuilder;
 
 public final class MetricGroupATestData {
 
-        static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers
-            .getLogger(MetricGroupATestData.class);
+        static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(MetricGroupATestData.class);
 
         public static final DateTime DATETIME = new DateTime(LocalDateTime.now(ZoneOffset.UTC));
 

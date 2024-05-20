@@ -6,8 +6,6 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class RadiationDirectSolar extends Measurement {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(RadiationDirectSolar.class);
-
     private final static Metrics metric = Metrics.RADIATION_DIRECT_SOLAR;
     private final static int BITS_OFFSET = 15;
     public final static int OFFSET_BYTES = 2;

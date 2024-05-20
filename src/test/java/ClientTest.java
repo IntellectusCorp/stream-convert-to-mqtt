@@ -15,12 +15,10 @@ import kr.intellectus.biz.kma3.ObservationMessage;
 import kr.intellectus.biz.kma3.ObservationType;
 import kr.intellectus.biz.kma3.metrics.MetricsGroup;
 import kr.intellectus.client.KMS3Client;
-import kr.intellectus.util.Logger;
-import kr.intellectus.util.Loggers;
 
 public class ClientTest {
 
-    static final Logger logger = Loggers.getLogger(ClientTest.class);
+    static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(ClientTest.class);
 
     @Test
     public void test() throws Exception {

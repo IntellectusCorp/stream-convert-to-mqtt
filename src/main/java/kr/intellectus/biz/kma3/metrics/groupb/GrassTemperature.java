@@ -6,8 +6,6 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class GrassTemperature extends Measurement {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(GrassTemperature.class);
-
     private final static Metrics metric = Metrics.GRASS_TEMPERATURE;
     private final static int BITS_OFFSET = 11;
     public final static int OFFSET_BYTES = 2;

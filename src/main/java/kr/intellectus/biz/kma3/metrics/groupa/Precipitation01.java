@@ -6,7 +6,7 @@ import software.amazon.awssdk.services.timestreamwrite.model.MeasureValueType;
 
 public class Precipitation01 extends Measurement {
 
-    static final kr.intellectus.util.Logger logger = kr.intellectus.util.Loggers.getLogger(WindDirectionInstantaneous.class);
+    static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(Precipitation01.class);
 
     private final static Metrics METRIC = Metrics.PRECIPITATION01;
     private final static int BITS_OFFSET = 15;
