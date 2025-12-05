@@ -4,26 +4,26 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelHandler.Sharable;
 import kr.intellectus.biz.kma3.ObservationMessage;
-import kr.intellectus.infra.AWSTimestream;
+// import kr.intellectus.infra.AWSTimestream;
 
 @Sharable
 public class ServerHandler  extends ChannelInboundHandlerAdapter {
 
     static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(ServerHandler.class);
 
-    private AWSTimestream timestream;
+    // private AWSTimestream timestream;
 
     public ServerHandler() {
         super();
 
-        this.timestream = AWSTimestream.INSTANCE;
+        // this.timestream = AWSTimestream.INSTANCE;
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 
         ObservationMessage msgObject = (ObservationMessage) msg;
-        timestream.writeRecordsWithUpsert(msgObject);
+        // timestream.writeRecordsWithUpsert(msgObject);
         logger.info("(ServerHandler) Received: " + msgObject.printFullMessage());
 
         ctx.flush();
